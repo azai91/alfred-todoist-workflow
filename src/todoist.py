@@ -17,16 +17,14 @@ def main(_):
       valid=False
     )
 
-  try:
-    Todoist.get_access_token()
-    wf.add_item(title="Add to Todoist",
-      arg=user_input,
-      valid=True)
-  except:
-    wf.add_item(title="Add Account",
-      arg=Todoist.get_auth_url(),
-      autocomplete='Add Account',
-      valid=True)
+  wf.add_item(title="Add Account",
+    arg=Todoist.get_auth_url(),
+    autocomplete='Add Account',
+    valid=True)
+  wf.add_item(title="Remove Account",
+    arg="logout",
+    autocomplete="Remove Account",
+    valid=True)
 
   wf.send_feedback()
   return 0

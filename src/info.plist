@@ -6,7 +6,18 @@
 	<string>com.todoist.azai91</string>
 	<key>connections</key>
 	<dict>
-		<key>FBA02C57-0874-4AA7-96E8-A69992143EBE</key>
+		<key>32CD5947-52D0-4D5D-B544-23E45232A026</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>9AD4E62A-2F09-4FC3-9D01-ACCB65CD5CE1</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>E90080D1-1AD4-4707-8CFE-9E0D3295079D</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
@@ -31,12 +42,51 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>from todoist_api import Todoist
+Todoist.add_to_list("{query}")</string>
+				<key>type</key>
+				<integer>3</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>0324E5BD-647D-403E-9059-F3ACBF834FA3</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>argumenttype</key>
 				<integer>0</integer>
+				<key>keyword</key>
+				<string>t</string>
+				<key>text</key>
+				<string>Add to Todoist</string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>E90080D1-1AD4-4707-8CFE-9E0D3295079D</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>1</integer>
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>keyword</key>
-				<string>t</string>
+				<string>ts</string>
 				<key>queuedelaycustom</key>
 				<integer>3</integer>
 				<key>queuedelayimmediatelyinitially</key>
@@ -48,7 +98,7 @@
 				<key>script</key>
 				<string>python todoist.py "{query}"</string>
 				<key>title</key>
-				<string>Add to Todoist</string>
+				<string>Options</string>
 				<key>type</key>
 				<integer>0</integer>
 				<key>withspace</key>
@@ -57,7 +107,7 @@
 			<key>type</key>
 			<string>alfred.workflow.input.scriptfilter</string>
 			<key>uid</key>
-			<string>FBA02C57-0874-4AA7-96E8-A69992143EBE</string>
+			<string>32CD5947-52D0-4D5D-B544-23E45232A026</string>
 			<key>version</key>
 			<integer>0</integer>
 		</dict>
@@ -76,7 +126,7 @@
 			<key>type</key>
 			<string>alfred.workflow.action.script</string>
 			<key>uid</key>
-			<string>0324E5BD-647D-403E-9059-F3ACBF834FA3</string>
+			<string>9AD4E62A-2F09-4FC3-9D01-ACCB65CD5CE1</string>
 			<key>version</key>
 			<integer>0</integer>
 		</dict>
@@ -90,7 +140,17 @@
 			<key>ypos</key>
 			<real>130</real>
 		</dict>
-		<key>FBA02C57-0874-4AA7-96E8-A69992143EBE</key>
+		<key>32CD5947-52D0-4D5D-B544-23E45232A026</key>
+		<dict>
+			<key>ypos</key>
+			<real>250</real>
+		</dict>
+		<key>9AD4E62A-2F09-4FC3-9D01-ACCB65CD5CE1</key>
+		<dict>
+			<key>ypos</key>
+			<real>250</real>
+		</dict>
+		<key>E90080D1-1AD4-4707-8CFE-9E0D3295079D</key>
 		<dict>
 			<key>ypos</key>
 			<real>130</real>

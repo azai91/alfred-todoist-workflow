@@ -17,8 +17,8 @@ def main(wf):
     start_server()
     content = str(content)[5:]
     subprocess.call(['open',content])
-  else:
-    Todoist.add_to_list(content,priority)
+  elif content[:6] in 'logout':
+    Todoist.delete_access_token()
 
   return 0
 

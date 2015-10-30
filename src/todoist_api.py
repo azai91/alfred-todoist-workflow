@@ -38,7 +38,16 @@ class Todoist():
     wf.delete_password('todoist_access_token')
 
   @classmethod
-  def add_to_list(cls,content, priority):
+  def add_to_list(cls,user_input):
+    user_input = user_input.split(';')
+    content=user_input
+    priority=None
+
+    try:
+      priority=user_input[1]
+    except:
+      prority=1
+
     access_token = cls.get_access_token()
     data = {
       "token" : access_token,
@@ -47,6 +56,7 @@ class Todoist():
     }
     requests.post('https://todoist.com/API/v6/add_item',data)
     return 0
+
 
   @classmethod
   def refresh(cls):
