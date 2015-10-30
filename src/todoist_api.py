@@ -4,7 +4,7 @@ from workflow import Workflow, PasswordNotFound, ICON_TRASH, ICON_WARNING, ICON_
 
 wf=Workflow()
 
-auth_url='https://todoist.com/oauth/authorize?client_id=%s&scope=%sstate=%s' % (CLIENT_ID, SCOPE, 'Alfred')
+auth_url='https://todoist.com/oauth/authorize?client_id=%s&scope=%s&state=%s' % (CLIENT_ID, SCOPE, 'Alfred')
 
 class Todoist():
 

@@ -5,7 +5,7 @@ from workflow import Workflow
 def main(wf):
   url = wf.args[0]
   start_server()
-  # wf.logger.debug(url)
+  wf.logger.error(url)
   subprocess.call(['open',url])
 
 def start_server():
