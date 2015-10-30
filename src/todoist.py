@@ -1,6 +1,5 @@
 from workflow import Workflow, PasswordNotFound, ICON_TRASH, ICON_WARNING, ICON_USER
 import requests
-from config import API_KEY
 from todoist_api import Todoist
 
 UPDATE_SETTINGS = {'github_slug' : 'azai91/alfred-drive-workflow'}
