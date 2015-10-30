@@ -6,19 +6,17 @@
 	<string>com.todoist.azai91</string>
 	<key>connections</key>
 	<dict>
-		<key>881DB68F-A0F0-4FDD-806A-972C03596384</key>
+		<key>FBA02C57-0874-4AA7-96E8-A69992143EBE</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>C83136F8-DFE1-47D7-974F-B7F067368FAA</string>
+				<string>0324E5BD-647D-403E-9059-F3ACBF834FA3</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
 				<string></string>
 			</dict>
 		</array>
-		<key>C83136F8-DFE1-47D7-974F-B7F067368FAA</key>
-		<array/>
 	</dict>
 	<key>createdby</key>
 	<string>azai91</string>
@@ -33,38 +31,52 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>concurrently</key>
-				<false/>
+				<key>argumenttype</key>
+				<integer>0</integer>
 				<key>escaping</key>
 				<integer>102</integer>
+				<key>keyword</key>
+				<string>t</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
 				<key>script</key>
 				<string>python todoist.py "{query}"</string>
+				<key>title</key>
+				<string>Add to Todoist</string>
 				<key>type</key>
 				<integer>0</integer>
+				<key>withspace</key>
+				<true/>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.action.script</string>
+			<string>alfred.workflow.input.scriptfilter</string>
 			<key>uid</key>
-			<string>C83136F8-DFE1-47D7-974F-B7F067368FAA</string>
+			<string>FBA02C57-0874-4AA7-96E8-A69992143EBE</string>
 			<key>version</key>
 			<integer>0</integer>
 		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>argumenttype</key>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>python todoist_launcher.py "{query}"</string>
+				<key>type</key>
 				<integer>0</integer>
-				<key>keyword</key>
-				<string>t</string>
-				<key>text</key>
-				<string>Add Item to Todist</string>
-				<key>withspace</key>
-				<true/>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.input.keyword</string>
+			<string>alfred.workflow.action.script</string>
 			<key>uid</key>
-			<string>881DB68F-A0F0-4FDD-806A-972C03596384</string>
+			<string>0324E5BD-647D-403E-9059-F3ACBF834FA3</string>
 			<key>version</key>
 			<integer>0</integer>
 		</dict>
@@ -73,12 +85,12 @@
 	<string></string>
 	<key>uidata</key>
 	<dict>
-		<key>881DB68F-A0F0-4FDD-806A-972C03596384</key>
+		<key>0324E5BD-647D-403E-9059-F3ACBF834FA3</key>
 		<dict>
 			<key>ypos</key>
 			<real>130</real>
 		</dict>
-		<key>C83136F8-DFE1-47D7-974F-B7F067368FAA</key>
+		<key>FBA02C57-0874-4AA7-96E8-A69992143EBE</key>
 		<dict>
 			<key>ypos</key>
 			<real>130</real>
