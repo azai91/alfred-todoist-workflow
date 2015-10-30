@@ -5,7 +5,30 @@
 	<key>bundleid</key>
 	<string>com.todoist.azai91</string>
 	<key>connections</key>
-	<dict/>
+	<dict>
+		<key>881DB68F-A0F0-4FDD-806A-972C03596384</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>C83136F8-DFE1-47D7-974F-B7F067368FAA</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>C83136F8-DFE1-47D7-974F-B7F067368FAA</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>E13A6C42-EC1D-44F2-BA0F-4A62DEB69DCD</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+	</dict>
 	<key>createdby</key>
 	<string>azai91</string>
 	<key>description</key>
@@ -19,33 +42,61 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>argumenttype</key>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<false/>
+				<key>output</key>
 				<integer>0</integer>
+				<key>removeextension</key>
+				<false/>
+				<key>sticky</key>
+				<false/>
+				<key>title</key>
+				<string>Added to Tododist Succesfully</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>E13A6C42-EC1D-44F2-BA0F-4A62DEB69DCD</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
 				<key>escaping</key>
 				<integer>102</integer>
-				<key>keyword</key>
-				<string>todo</string>
-				<key>queuedelaycustom</key>
-				<integer>3</integer>
-				<key>queuedelayimmediatelyinitially</key>
-				<true/>
-				<key>queuedelaymode</key>
-				<integer>0</integer>
-				<key>queuemode</key>
-				<integer>1</integer>
 				<key>script</key>
-				<string>query="{query}"</string>
-				<key>title</key>
-				<string>Add to Todoist</string>
+				<string>python todoist.py "{query}"</string>
 				<key>type</key>
 				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>C83136F8-DFE1-47D7-974F-B7F067368FAA</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>keyword</key>
+				<string>todo</string>
+				<key>text</key>
+				<string>Add item to Todist</string>
 				<key>withspace</key>
 				<true/>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.input.scriptfilter</string>
+			<string>alfred.workflow.input.keyword</string>
 			<key>uid</key>
-			<string>06D92A48-C73F-4E62-BECD-42EAB146F89F</string>
+			<string>881DB68F-A0F0-4FDD-806A-972C03596384</string>
 			<key>version</key>
 			<integer>0</integer>
 		</dict>
@@ -54,7 +105,17 @@
 	<string></string>
 	<key>uidata</key>
 	<dict>
-		<key>06D92A48-C73F-4E62-BECD-42EAB146F89F</key>
+		<key>881DB68F-A0F0-4FDD-806A-972C03596384</key>
+		<dict>
+			<key>ypos</key>
+			<real>130</real>
+		</dict>
+		<key>C83136F8-DFE1-47D7-974F-B7F067368FAA</key>
+		<dict>
+			<key>ypos</key>
+			<real>130</real>
+		</dict>
+		<key>E13A6C42-EC1D-44F2-BA0F-4A62DEB69DCD</key>
 		<dict>
 			<key>ypos</key>
 			<real>10</real>
