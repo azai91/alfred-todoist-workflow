@@ -1,8 +1,5 @@
-import os
-import sys
 import BaseHTTPServer
 from SimpleHTTPServer import SimpleHTTPRequestHandler
-from oauth2client.client import OAuth2WebServerFlow
 from todoist_api import Todoist
 import urlparse
 
@@ -15,7 +12,7 @@ class HandlerClass(BaseHTTPServer.BaseHTTPRequestHandler):
       Todoist.save_access_token(access_token)
       s.wfile.write('Your code has been saved in Alfred')
     except:
-      s.wfile.write('Error' + code)
+      s.wfile.write('Error with setting code')
 
 ServerClass  = BaseHTTPServer.HTTPServer
 Protocol     = "HTTP/1.0"
