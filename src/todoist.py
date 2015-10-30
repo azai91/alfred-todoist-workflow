@@ -8,7 +8,14 @@ HELP_URL = 'https://github.com/azai91/alfred-drive-workflow/issues'
 wf = Workflow(update_settings=UPDATE_SETTINGS, help_url=HELP_URL)
 
 def main(_):
-  user_input = wf.args[0]
+  user_input = wf.args[0].split(';')
+  content=user_input[0]
+  priority=None
+
+  try:
+    priority=user_input[1]
+  except:
+    prority=1
 
   if wf.update_available:
     wf.add_item(
@@ -19,7 +26,8 @@ def main(_):
 
   data = {
     "token" : API_KEY,
-    "content" : user_input
+    "content" : user_input,
+    "priority" : priority
   }
 
   try:
