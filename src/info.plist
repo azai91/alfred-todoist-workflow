@@ -18,16 +18,7 @@
 			</dict>
 		</array>
 		<key>C83136F8-DFE1-47D7-974F-B7F067368FAA</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>E13A6C42-EC1D-44F2-BA0F-4A62DEB69DCD</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-			</dict>
-		</array>
+		<array/>
 	</dict>
 	<key>createdby</key>
 	<string>azai91</string>
@@ -39,29 +30,6 @@
 	<string>Todoist</string>
 	<key>objects</key>
 	<array>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>lastpathcomponent</key>
-				<false/>
-				<key>onlyshowifquerypopulated</key>
-				<false/>
-				<key>output</key>
-				<integer>0</integer>
-				<key>removeextension</key>
-				<false/>
-				<key>sticky</key>
-				<false/>
-				<key>title</key>
-				<string>Added to Tododist Succesfully</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.output.notification</string>
-			<key>uid</key>
-			<string>E13A6C42-EC1D-44F2-BA0F-4A62DEB69DCD</string>
-			<key>version</key>
-			<integer>0</integer>
-		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
@@ -114,11 +82,6 @@
 		<dict>
 			<key>ypos</key>
 			<real>130</real>
-		</dict>
-		<key>E13A6C42-EC1D-44F2-BA0F-4A62DEB69DCD</key>
-		<dict>
-			<key>ypos</key>
-			<real>10</real>
 		</dict>
 	</dict>
 	<key>webaddress</key>
