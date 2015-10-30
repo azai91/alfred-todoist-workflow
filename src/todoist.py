@@ -8,14 +8,7 @@ HELP_URL = 'https://github.com/azai91/alfred-drive-workflow/issues'
 wf = Workflow(update_settings=UPDATE_SETTINGS, help_url=HELP_URL)
 
 def main(_):
-  user_input = wf.args[0].split(';')
-  content=user_input[0]
-  priority=None
-
-  try:
-    priority=user_input[1]
-  except:
-    prority=1
+  user_input = wf.args[0]
 
   if wf.update_available:
     wf.add_item(
@@ -26,15 +19,16 @@ def main(_):
 
   try:
     Todoist.get_access_token()
-    Todoist.add_to_list(content,prority)
-    return 0
+    wf.add_item(title="Add Item to Todoist",
+      arg=user_input,
+      valid=True)
   except:
     wf.add_item(title="Add Account",
       arg=Todoist.get_auth_url(),
       autocomplete='Add Account',
       valid=True)
-    wf.send_feedback()
 
+  wf.send_feedback()
   return 0
 
 

@@ -11,7 +11,8 @@ class HandlerClass(BaseHTTPServer.BaseHTTPRequestHandler):
     try:
       ##TODO, compare state, better parser to  check params
       code = urlparse.urlparse(s.path)[4].split('=')[2]
-      Todoist.exchange_tokens(code)
+      access_token = Todoist.exchange_tokens(code)
+      Todoist.save_access_token(access_token)
       s.wfile.write('Your code has been saved in Alfred')
     except:
       s.wfile.write('Error' + code)
