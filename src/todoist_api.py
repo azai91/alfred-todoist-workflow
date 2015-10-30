@@ -44,9 +44,9 @@ class Todoist():
     return 0
 
   @classmethod
-  def create_request_body(user_input):
+  def create_request_body(cls,user_input):
     user_input = user_input.split(';')
-    content=user_input
+    content=user_input[0]
     priority=None
 
     try:
