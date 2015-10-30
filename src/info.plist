@@ -48,7 +48,10 @@
 				<integer>102</integer>
 				<key>script</key>
 				<string>from todoist_api import Todoist
-Todoist.add_to_list("{query}")</string>
+try:
+	Todoist.add_to_list("{query}")
+except:
+	Todoist.open_auth_page()</string>
 				<key>type</key>
 				<integer>3</integer>
 			</dict>

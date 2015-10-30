@@ -1,4 +1,6 @@
 import requests
+import sys
+import subprocess
 from config import CLIENT_ID, CLIENT_SECRET, SCOPE
 from workflow import Workflow, PasswordNotFound, ICON_TRASH, ICON_WARNING, ICON_USER
 
@@ -11,6 +13,16 @@ class Todoist():
   @classmethod
   def get_auth_url(cls):
     return auth_url
+
+  @classmethod
+  def open_auth_page(cls):
+    cls.start_auth_server()
+    auth_url = cls.get_auth_url()
+    subprocess.call(['open', auth_url])
+
+  @classmethod
+  def start_auth_server(cls):
+    subprocess.Popen(['nohup','python','./server.py'])
 
   @classmethod
   def verify_credentials(cls):
@@ -40,8 +52,7 @@ class Todoist():
   @classmethod
   def add_to_list(cls,user_input):
     data = cls.create_request_body(user_input)
-    requests.post('https://todoist.com/API/v6/add_item',data)
-    return 0
+    return requests.post('https://todoist.com/API/v6/add_item',data)
 
   @classmethod
   def create_request_body(cls,user_input):

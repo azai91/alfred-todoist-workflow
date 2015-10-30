@@ -1,5 +1,5 @@
-import subprocess
 import sys
+import subprocess
 from workflow import Workflow
 from todoist_api import Todoist
 
@@ -14,16 +14,11 @@ def main(wf):
     prority=1
 
   if content[:5] in 'login':
-    start_server()
-    content = str(content)[5:]
-    subprocess.call(['open',content])
+    Todoist.open_auth_page()
   elif content[:6] in 'logout':
     Todoist.delete_access_token()
 
   return 0
-
-def start_server():
-    subprocess.Popen(['nohup','python','./server.py'])
 
 if __name__ == '__main__':
     wf = Workflow()

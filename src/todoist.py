@@ -1,6 +1,5 @@
 from workflow import Workflow, PasswordNotFound, ICON_TRASH, ICON_WARNING, ICON_USER
 import requests
-from todoist_api import Todoist
 
 UPDATE_SETTINGS = {'github_slug' : 'azai91/alfred-drive-workflow'}
 HELP_URL = 'https://github.com/azai91/alfred-drive-workflow/issues'
@@ -17,14 +16,16 @@ def main(_):
       valid=False
     )
 
-  wf.add_item(title="Add Account",
-    arg=Todoist.get_auth_url(),
-    autocomplete='Add Account',
-    valid=True)
-  wf.add_item(title="Remove Account",
-    arg="logout",
-    autocomplete="Remove Account",
-    valid=True)
+  if user_input in "Add Account":
+    wf.add_item(title="Add Account",
+      arg="login",
+      autocomplete='Add Account',
+      valid=True)
+  if user_input in "Remove Account":
+    wf.add_item(title="Remove Account",
+      arg="logout",
+      autocomplete="Remove Account",
+      valid=True)
 
   wf.send_feedback()
   return 0
