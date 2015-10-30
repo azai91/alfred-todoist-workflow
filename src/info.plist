@@ -55,9 +55,9 @@
 				<key>argumenttype</key>
 				<integer>0</integer>
 				<key>keyword</key>
-				<string>todo</string>
+				<string>t</string>
 				<key>text</key>
-				<string>Add item to Todist</string>
+				<string>Add Item to Todist</string>
 				<key>withspace</key>
 				<true/>
 			</dict>
