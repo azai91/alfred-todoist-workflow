@@ -19,7 +19,7 @@ def main(_):
 
   try:
     Todoist.get_access_token()
-    wf.add_item(title="Add Item to Todoist",
+    wf.add_item(title="Add to Todoist",
       arg=user_input,
       valid=True)
   except:
