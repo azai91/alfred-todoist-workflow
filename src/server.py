@@ -9,8 +9,8 @@ import urlparse
 class HandlerClass(BaseHTTPServer.BaseHTTPRequestHandler):
   def do_GET(s):
     try:
-      ##TODO, compare state
-      code = urlparse.urlparse(s.path)[4].split('=')[1]
+      ##TODO, compare state, better parser to  check params
+      code = urlparse.urlparse(s.path)[4].split('=')[2]
       Todoist.exchange_tokens(code)
       s.wfile.write('Your code has been saved in Alfred')
     except:
