@@ -101,7 +101,7 @@ except:
 				<key>script</key>
 				<string>python todoist.py "{query}"</string>
 				<key>title</key>
-				<string>Options</string>
+				<string>Add Account</string>
 				<key>type</key>
 				<integer>0</integer>
 				<key>withspace</key>

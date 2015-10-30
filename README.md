@@ -1,5 +1,5 @@
 #Todoist Workflow for [Alfred 2](http://www.alfredapp.com/)
-Quickly add tasks to Todoist. They keyword is "t" (example ```t take a shower;4```).
+Quickly add tasks to Todoist. The keyword is "t" (example ```t take a shower;4```).
 
 ![inline](./assets/example.png)
 
