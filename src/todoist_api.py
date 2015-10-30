@@ -39,6 +39,12 @@ class Todoist():
 
   @classmethod
   def add_to_list(cls,user_input):
+    data = cls.create_request_body(user_input)
+    requests.post('https://todoist.com/API/v6/add_item',data)
+    return 0
+
+  @classmethod
+  def create_request_body(user_input):
     user_input = user_input.split(';')
     content=user_input
     priority=None
@@ -54,9 +60,7 @@ class Todoist():
       "content" : content,
       "priority" : priority
     }
-    requests.post('https://todoist.com/API/v6/add_item',data)
-    return 0
-
+    return data
 
   @classmethod
   def refresh(cls):
