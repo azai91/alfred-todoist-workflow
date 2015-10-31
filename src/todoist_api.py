@@ -25,10 +25,6 @@ class Todoist():
     subprocess.Popen(['nohup','python','./server.py'])
 
   @classmethod
-  def verify_credentials(cls):
-    pass
-
-  @classmethod
   def exchange_tokens(cls,code):
     response = requests.post('https://todoist.com/oauth/access_token', {
       "client_id" : CLIENT_ID,
@@ -57,13 +53,13 @@ class Todoist():
   @classmethod
   def create_request_body(cls,user_input):
     user_input = user_input.split(';')
-    content=user_input[0]
-    priority=None
+    content = user_input[0]
+    priority = None
 
     try:
-      priority=user_input[1]
+      priority = user_input[1]
     except:
-      prority=1
+      prority = 1
 
     access_token = cls.get_access_token()
     data = {
