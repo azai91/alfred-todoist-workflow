@@ -68,7 +68,7 @@ except:
 				<key>argumenttype</key>
 				<integer>0</integer>
 				<key>keyword</key>
-				<string>t</string>
+				<string>a</string>
 				<key>text</key>
 				<string>Add to Todoist</string>
 				<key>withspace</key>
