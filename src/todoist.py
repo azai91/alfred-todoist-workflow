@@ -1,8 +1,7 @@
-from workflow import Workflow, PasswordNotFound, ICON_TRASH, ICON_WARNING, ICON_USER
-import requests
+from workflow import Workflow
 
-UPDATE_SETTINGS = {'github_slug' : 'azai91/alfred-drive-workflow'}
-HELP_URL = 'https://github.com/azai91/alfred-drive-workflow/issues'
+UPDATE_SETTINGS = {'github_slug' : 'azai91/alfred-todoist-workflow'}
+HELP_URL = 'https://github.com/azai91/alfred-todoist-workflow/issues'
 
 wf = Workflow(update_settings=UPDATE_SETTINGS, help_url=HELP_URL)
 
