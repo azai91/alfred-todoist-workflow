@@ -15,12 +15,12 @@ def main(_):
       valid=False
     )
 
-  if user_input in "Add Account":
+  if user_input.lower() in "Add Account".lower():
     wf.add_item(title="Add Account",
       arg="login",
       autocomplete='Add Account',
       valid=True)
-  if user_input in "Remove Account":
+  if user_input.lower() in "Remove Account".lower():
     wf.add_item(title="Remove Account",
       arg="logout",
       autocomplete="Remove Account",
