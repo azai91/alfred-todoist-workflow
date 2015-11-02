@@ -9,6 +9,7 @@ def main(wf):
     Todoist.open_auth_page()
   elif options[:6] in 'logout':
     Todoist.delete_access_token()
+    sys.stdout('')
 
   return 0
 
