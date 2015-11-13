@@ -64,21 +64,20 @@ class Todoist():
     content = user_input[0]
     options = None
     priority = 1
-    project_id = None
-    projects = wf.stored_data('todoist_projects')
 
     try:
       options = user_input[1]
     except:
       options = None
 
+    print options
     # assigns priority or project
     if options:
       if isinstance(options, int):
         priority = int(options)
-      elif any(project['name'].lower() == options.lower() for project in projects):
-        project = (item for item in projects if item["name"].lower() == options.lower()).next()
-        project_id = project["id"]
+      else:
+        project_id = cls.get_project_id(options)
+
 
     commands = {}
     commands['type'] = command
@@ -94,6 +93,21 @@ class Todoist():
     return json.dumps([commands])
 
   @classmethod
+  def get_project_id(cls, project_name):
+    project_id = None
+    projects = wf.stored_data('todoist_projects')
+    if not any(project['name'].lower() == project_name.lower() for project in projects):
+        cls.sync()
+    try:
+      project = (item for item in projects if item["name"].lower() == project_name.lower()).next()
+      project_id = project["id"]
+    except:
+      project_id = None
+
+    return project_id
+
+
+  @classmethod
   def sync(cls):
     access_token = cls.get_access_token()
     response = requests.post(SYNC_URL, {
@@ -103,6 +117,8 @@ class Todoist():
     }).json()['Projects'];
 
     wf.store_data('todoist_projects', response)
+
+    return True
 
 
 def random_id(length):
