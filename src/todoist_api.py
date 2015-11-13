@@ -4,6 +4,7 @@ import subprocess
 import json
 from config import CLIENT_ID, CLIENT_SECRET, SCOPE, AUTH_URL, ADD_ITEM_URL, TOKEN_URL, SYNC_URL
 from workflow import Workflow
+import random, string
 
 UPDATE_SETTINGS = {'github_slug' : 'azai91/alfred-todoist-workflow'}
 HELP_URL = 'https://github.com/azai91/alfred-todoist-workflow/issues'
@@ -83,8 +84,8 @@ class Todoist():
     commands['type'] = command
 
     # Need to generate random string
-    commands['temp_id'] = 'temp'
-    commands['uuid'] = 'temp_uuid'
+    commands['temp_id'] = random_id(10)
+    commands['uuid'] = random_id(10)
     commands['args'] = {}
     commands['args']['priority'] = priority
     commands['args']['content'] = user_input[0]
@@ -103,3 +104,7 @@ class Todoist():
     }).json()['Projects'];
 
     wf.store_data('todoist_projects', response)
+
+
+def random_id(length):
+   return ''.join(random.choice(string.lowercase) for i in range(length))
