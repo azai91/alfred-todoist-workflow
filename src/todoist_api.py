@@ -76,14 +76,13 @@ class Todoist():
     if options:
       if isinstance(options, int):
         priority = int(options)
-      elif any(project['name'] == options for project in projects):
-        project = (item for item in projects if item["name"] == options).next()
+      elif any(project['name'].lower() == options.lower() for project in projects):
+        project = (item for item in projects if item["name"].lower() == options.lower()).next()
         project_id = project["id"]
 
     commands = {}
     commands['type'] = command
 
-    # Need to generate random string
     commands['temp_id'] = random_id(10)
     commands['uuid'] = random_id(10)
     commands['args'] = {}
