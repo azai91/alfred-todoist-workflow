@@ -196,7 +196,7 @@ except:
 				<key>sticky</key>
 				<false/>
 				<key>text</key>
-				<string>Account Removed</string>
+				<string>{query}</string>
 				<key>title</key>
 				<string>Todoist</string>
 			</dict>

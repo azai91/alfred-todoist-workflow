@@ -1,7 +1,8 @@
 import requests
 import sys
 import subprocess
-from config import CLIENT_ID, CLIENT_SECRET, SCOPE, AUTH_URL, ADD_ITEM_URL, TOKEN_URL
+import json
+from config import CLIENT_ID, CLIENT_SECRET, SCOPE, AUTH_URL, ADD_ITEM_URL, TOKEN_URL, SYNC_URL
 from workflow import Workflow
 
 UPDATE_SETTINGS = {'github_slug' : 'azai91/alfred-todoist-workflow'}
@@ -43,24 +44,62 @@ class Todoist():
 
   @classmethod
   def add_to_list(cls,user_input):
-    data = cls.create_request_body(user_input)
-    return requests.post(ADD_ITEM_URL, data)
+    data = cls.create_request_body("item_add", user_input)
+    return requests.post(SYNC_URL, data)
 
   @classmethod
-  def create_request_body(cls,user_input):
-    user_input = user_input.split(';')
-    content = user_input[0]
-    priority = None
-
-    try:
-      priority = user_input[1]
-    except:
-      prority = 1
-
+  def create_request_body(cls, command, user_input):
     access_token = cls.get_access_token()
+    commands = cls.create_commands(command, user_input)
     data = {
       "token" : access_token,
-      "content" : content,
-      "priority" : priority
+      "commands" : commands
     }
     return data
+
+  @classmethod
+  def create_commands(cls, command, user_input):
+    user_input = user_input.split(';')
+    content = user_input[0]
+    options = None
+    priority = 1
+    project_id = None
+    projects = wf.stored_data('todoist_projects')
+
+    try:
+      options = user_input[1]
+    except:
+      options = None
+
+    # assigns priority or project
+    if options:
+      if isinstance(options, int):
+        priority = int(options)
+      elif any(project['name'] == options for project in projects):
+        project = (item for item in projects if item["name"] == options).next()
+        project_id = project["id"]
+
+    commands = {}
+    commands['type'] = command
+
+    # Need to generate random string
+    commands['temp_id'] = 'temp'
+    commands['uuid'] = 'temp_uuid'
+    commands['args'] = {}
+    commands['args']['priority'] = priority
+    commands['args']['content'] = user_input[0]
+    if project_id:
+      commands['args']['project_id'] = project_id
+
+    return json.dumps([commands])
+
+  @classmethod
+  def sync(cls):
+    access_token = cls.get_access_token()
+    response = requests.post(SYNC_URL, {
+      "token" : access_token,
+      "seq_no" : 0,
+      "resource_types": '["all"]'
+    }).json()['Projects'];
+
+    wf.store_data('todoist_projects', response)

@@ -12,8 +12,7 @@ def main(_):
     wf.add_item(
       'An update is available!',
       autocomplete='workflow:update',
-      valid=False
-    )
+      valid=False)
 
   if user_input.lower() in "Add Account".lower():
     wf.add_item(title="Add Account",
@@ -24,6 +23,11 @@ def main(_):
     wf.add_item(title="Remove Account",
       arg="logout",
       autocomplete="Remove Account",
+      valid=True)
+  if user_input.lower() in "Sync Account".lower():
+    wf.add_item(title="Sync Account",
+      arg="sync",
+      autocomplete="Sync Account",
       valid=True)
 
   wf.send_feedback()

@@ -5,11 +5,14 @@ from todoist_api import Todoist
 def main(wf):
   options = wf.args[0]
 
-  if options[:5] in 'login':
+  if options == 'login':
     Todoist.open_auth_page()
-  elif options[:6] in 'logout':
+  elif options == 'logout':
     Todoist.delete_access_token()
-    sys.stdout('')
+    sys.stdout.write('Account Removed')
+  elif options == 'sync':
+    Todoist.sync()
+    sys.stdout.write('Account Synced')
 
   return 0
 
