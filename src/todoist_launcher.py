@@ -13,6 +13,9 @@ def main(wf):
   elif options == 'sync':
     Todoist.sync()
     sys.stdout.write('Account Synced')
+  elif options.startswith('home'):
+    Todoist.add_coordinates('home',options[4:])
+    sys.stdout.write('Home Coordinates Saved')
 
   return 0
 
