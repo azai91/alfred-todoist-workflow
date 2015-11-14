@@ -149,7 +149,7 @@ except:
 				<key>queuemode</key>
 				<integer>1</integer>
 				<key>script</key>
-				<string>python todoist.py "{query}"</string>
+				<string>python todoist_settings.py "{query}"</string>
 				<key>title</key>
 				<string>Todoist Settings</string>
 				<key>type</key>
