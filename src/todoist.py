@@ -32,12 +32,6 @@ def main(_):
       autocomplete="Remove Account",
       valid=True)
 
-  if user_input.lower() in "Sync Account".lower():
-    wf.add_item(title="Sync Account",
-      arg="sync",
-      autocomplete="Sync Account",
-      valid=True)
-
   if user_input.lower() in "Set Home Location ".lower():
     wf.add_item(title="Set Home Location [long,lat]",
       autocomplete="Set Home Location ")
