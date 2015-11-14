@@ -107,6 +107,18 @@ class Todoist():
   @classmethod
   def create_reminder(cls, user_input, uuid):
     options = {}
+    option = None
+
+    try:
+      results = user_input.split(' ')[0]
+      location = results[1]
+      option = results[0]
+    except:
+      location = user_input
+
+    loc_trigger = 'on_leave' if option == 'after' else 'on_enter'
+    coordinates = wf.stored_data('todoist_%s' % user_input).split(',')
+
     options['type'] = 'reminder_add'
     options['temp_id'] = random_id(10)
     options['uuid'] = random_id(10)
@@ -116,10 +128,10 @@ class Todoist():
     options['args']['service'] = 'mobile'
     options['args']['item_id'] = uuid
 
-    options['args']['name'] = user_input
-    options['args']['loc_lat'] = '33.97616980000001'
-    options['args']['loc_long'] = '-118.428517'
-    options['args']['loc_trigger'] = 'on_enter' # to edit
+    options['args']['name'] = location.title()
+    options['args']['loc_lat'] = coordinates[0]
+    options['args']['loc_long'] = coordinates[1]
+    options['args']['loc_trigger'] = loc_trigger
     options['args']['radius'] = 800 # half a mile
 
     return options
