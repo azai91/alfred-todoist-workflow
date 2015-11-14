@@ -35,7 +35,7 @@ def main(_):
   if user_input.lower().startswith("Set Home Location ".lower()):
     # insert long lat checker
     wf.add_item(title="Set Home Location %s" % user_input[18:],
-      arg="home %s" % user_input[18:],
+      arg="home %s" % user_input[18:].replace(" ",""),
       valid=True)
 
   wf.send_feedback()
