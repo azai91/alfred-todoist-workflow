@@ -89,7 +89,12 @@ def validate_coordinates(coordinates):
     long = coordinates
     lat = 0
 
-  return isinstance(long, float) and isinstance(lat, float)
+  try:
+    float(long)
+    float(lat)
+    return True
+  except:
+    return False
 
 if __name__ == '__main__':
   wf.run(main)
