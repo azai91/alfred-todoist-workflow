@@ -71,6 +71,13 @@ def main(_):
 def validate_coordinates(coordinates):
   """
   Validates that user inputted coordinates following format: float,float
+
+  Args:
+    coordinates: string, User inputted string to validate
+
+  Returns:
+    Boolean indicating whether or not the input string is properly formatted
+
   """
 
   long = None
