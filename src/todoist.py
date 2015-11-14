@@ -1,5 +1,5 @@
 """
-Displays the options for adding and removing an account
+Displays settings
 """
 
 from workflow import Workflow
@@ -13,13 +13,18 @@ def main(_):
 
   user_input = wf.args[0]
 
-  # Displays update feedback if update is available
+  """
+  Displays update feedback if update is available
+  """
   if wf.update_available:
     wf.add_item(
       'An update is available!',
       autocomplete='workflow:update',
       valid=False)
 
+  """
+  Display option to add and remove account
+  """
   if user_input.lower() in "Add Account".lower():
     wf.add_item(title="Add Account",
       arg="login",
@@ -32,6 +37,10 @@ def main(_):
       autocomplete="Remove Account",
       valid=True)
 
+
+  """
+  Allows user to input Home and Work coordinates.
+  """
   if user_input.lower() in "Set Home Location ".lower():
     wf.add_item(title="Set Home Location [long,lat]",
       autocomplete="Set Home Location ")
@@ -60,6 +69,10 @@ def main(_):
   return 0
 
 def validate_coordinates(coordinates):
+  """
+  Validates that user inputted coordinates following format: float,float
+  """
+
   long = None
   lat = None
   if ';' in coordinates:
@@ -69,7 +82,7 @@ def validate_coordinates(coordinates):
     long = coordinates
     lat = 0
 
-  return isinstance(long, int) and isinstance(lat, int)
+  return isinstance(long, float) and isinstance(lat, float)
 
 if __name__ == '__main__':
   wf.run(main)
