@@ -71,10 +71,9 @@ class Todoist():
     reminder = None
 
     try:
-      options = user_input[1]
+      options = user_input[1].strip()
     except:
       options = None
-
 
     if options:
       if 'work' in options.lower() or 'home' in options.lower():
@@ -110,14 +109,14 @@ class Todoist():
     option = None
 
     try:
-      results = user_input.split(' ')[0]
+      results = user_input.split(' ')
       location = results[1]
       option = results[0]
     except:
       location = user_input
 
     loc_trigger = 'on_leave' if option == 'after' else 'on_enter'
-    coordinates = wf.stored_data('todoist_%s' % user_input).split(',')
+    coordinates = wf.stored_data('todoist_%s' % location).split(',')
 
     options['type'] = 'reminder_add'
     options['temp_id'] = random_id(10)
@@ -135,9 +134,6 @@ class Todoist():
     options['args']['radius'] = 800 # half a mile
 
     return options
-
-
-
 
   @classmethod
   def get_project_id(cls, project_name):
