@@ -1,3 +1,7 @@
+"""
+Displays the options for adding and removing an account
+"""
+
 from workflow import Workflow
 
 UPDATE_SETTINGS = {'github_slug' : 'azai91/alfred-todoist-workflow'}
@@ -6,8 +10,10 @@ HELP_URL = 'https://github.com/azai91/alfred-todoist-workflow/issues'
 wf = Workflow(update_settings=UPDATE_SETTINGS, help_url=HELP_URL)
 
 def main(_):
+
   user_input = wf.args[0]
 
+  # Displays update feedback if update is available
   if wf.update_available:
     wf.add_item(
       'An update is available!',
