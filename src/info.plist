@@ -73,7 +73,8 @@
 import sys
 try:
 	Todoist.add_to_list("{query}")
-	sys.stdout.write("{query}")
+	task = "{query}".split(';')[0]
+	sys.stdout.write(task)
 except:
 	Todoist.open_auth_page()</string>
 				<key>type</key>
@@ -138,7 +139,7 @@ except:
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>keyword</key>
-				<string>todoist</string>
+				<string>todoist:</string>
 				<key>queuedelaycustom</key>
 				<integer>3</integer>
 				<key>queuedelayimmediatelyinitially</key>
@@ -150,7 +151,7 @@ except:
 				<key>script</key>
 				<string>python todoist.py "{query}"</string>
 				<key>title</key>
-				<string>Add Account</string>
+				<string>Todoist Settings</string>
 				<key>type</key>
 				<integer>0</integer>
 				<key>withspace</key>
