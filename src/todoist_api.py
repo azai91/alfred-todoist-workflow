@@ -43,15 +43,16 @@ class Todoist():
   def delete_access_token(cls):
     wf.delete_password('todoist_access_token')
 
+  # change name to add_item
   @classmethod
-  def add_to_list(cls,user_input):
-    data = cls.create_request_body("item_add", user_input)
+  def add_to_list(cls, user_input):
+    data = cls.create_request_body(user_input)
     return requests.post(SYNC_URL, data)
 
   @classmethod
-  def create_request_body(cls, command, user_input):
+  def create_request_body(cls, user_input):
     access_token = cls.get_access_token()
-    commands = cls.create_commands(command, user_input)
+    commands = cls.create_commands(user_input)
     data = {
       "token" : access_token,
       "commands" : commands
@@ -59,38 +60,72 @@ class Todoist():
     return data
 
   @classmethod
-  def create_commands(cls, command, user_input):
+  def create_commands(cls, user_input):
     user_input = user_input.split(';')
+    commands = []
     content = user_input[0]
     options = None
     priority = 1
+    project_id = None
+    uuid = random_id(10)
+    reminder = None
 
     try:
       options = user_input[1]
     except:
       options = None
 
-    print options
-    # assigns priority or project
+
     if options:
-      if isinstance(options, int):
+      if 'work' in options.lower() or 'home' in options.lower():
+        reminder = cls.create_reminder(options, uuid)
+      elif isinstance(options, int):
         priority = int(options)
       else:
         project_id = cls.get_project_id(options)
 
 
-    commands = {}
-    commands['type'] = command
+    command = {}
+    command['type'] = 'item_add'
 
-    commands['temp_id'] = random_id(10)
-    commands['uuid'] = random_id(10)
-    commands['args'] = {}
-    commands['args']['priority'] = priority
-    commands['args']['content'] = user_input[0]
+    command['temp_id'] = uuid
+    command['uuid'] = random_id(10)
+    command['args'] = {}
+
+    command['args']['priority'] = priority
+    command['args']['content'] = user_input[0]
     if project_id:
-      commands['args']['project_id'] = project_id
+      command['args']['project_id'] = project_id
 
-    return json.dumps([commands])
+    commands.append(command)
+    if reminder:
+      commands.append(reminder)
+
+
+    return json.dumps(commands)
+
+  @classmethod
+  def create_reminder(cls, user_input, uuid):
+    options = {}
+    options['type'] = 'reminder_add'
+    options['temp_id'] = random_id(10)
+    options['uuid'] = random_id(10)
+
+    options['args'] = {}
+    options['args']['type'] = 'location'
+    options['args']['service'] = 'mobile'
+    options['args']['item_id'] = uuid
+
+    options['args']['name'] = user_input
+    options['args']['loc_lat'] = '33.97616980000001'
+    options['args']['loc_long'] = '-118.428517'
+    options['args']['loc_trigger'] = 'on_enter' # to edit
+    options['args']['radius'] = 800 # half a mile
+
+    return options
+
+
+
 
   @classmethod
   def get_project_id(cls, project_name):
@@ -114,12 +149,19 @@ class Todoist():
       "token" : access_token,
       "seq_no" : 0,
       "resource_types": '["all"]'
-    }).json()['Projects'];
-
-    wf.store_data('todoist_projects', response)
+    }).json();
+    wf.store_data('todoist_locations', response['Locations'])
+    wf.store_data('todoist_projects', response['Projects'])
 
     return True
 
+  @classmethod
+  def get_locations(cls):
+    return wf.stored_data('todoist_locations')
+
+  @classmethod
+  def add_coordinates(cls, location, coordinates):
+    wf.store_data('todoist_%s' % location, coordinates)
 
 def random_id(length):
    return ''.join(random.choice(string.lowercase) for i in range(length))
