@@ -5,7 +5,7 @@ Unit tests of todoist_settings
 import unittest
 import sys
 
-from todoist_settings import validate_coordinates, main, wf
+from src.todoist_settings import validate_coordinates, main, wf
 
 class TestTodoistSettings(unittest.TestCase):
 
