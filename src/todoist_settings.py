@@ -80,11 +80,10 @@ def validate_coordinates(coordinates):
 
   """
 
-  long = None
-  lat = None
   if ';' in coordinates:
     coordinates = coordinates.split(';')
-    [long,lat] = coordinates
+    long = coordinates[0]
+    lat = coordinates[1] if len(coordinates[1]) else 0
   else:
     long = coordinates
     lat = 0
