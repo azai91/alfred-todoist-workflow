@@ -31,19 +31,19 @@ def main(_):
       valid=True)
   if user_input.lower() in "Set Home Location".lower():
     wf.add_item(title="Set Home Location [long,lat]",
-      autocomplete="Set Home Location")
+      autocomplete="Set Home Location ")
   if user_input.lower().startswith("Set Home Location ".lower()):
     # insert long lat checker
     wf.add_item(title="Set Home Location %s" % user_input[18:],
-      arg="home %s" % user_input[18:].replace(" ",""),
+      arg="home%s" % user_input[18:].replace(" ",""),
       valid=True)
   if user_input.lower() in "Set Work Location".lower():
     wf.add_item(title="Set Work Location [long,lat]",
-      autocomplete="Set Work Location")
+      autocomplete="Set Work Location ")
   if user_input.lower().startswith("Set Work Location ".lower()):
     # insert long lat checker
     wf.add_item(title="Set Work Location %s" % user_input[18:],
-      arg="home %s" % user_input[18:].replace(" ",""),
+      arg="work%s" % user_input[18:].replace(" ",""),
       valid=True)
 
   wf.send_feedback()
