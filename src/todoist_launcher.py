@@ -17,8 +17,8 @@ def main(wf):
     Todoist.add_coordinates('home',options[4:])
     sys.stdout.write('Home Coordinates Saved')
   elif options.startswith('work'):
-    Todoist.add_coordinates('home',options[4:])
-    sys.stdout.write('Home Coordinates Saved')
+    Todoist.add_coordinates('work',options[4:])
+    sys.stdout.write('Work Coordinates Saved')
 
   return 0
 
