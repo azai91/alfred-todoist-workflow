@@ -25,13 +25,13 @@ def main(_):
     """
     Display option to add and remove account
     """
-    if user_input.lower() in "Add Account".lower():
+    if "Add Account".lower().startswith(user_input.lower()):
         wf.add_item(title="Add Account",
             arg="login",
             autocomplete='Add Account',
             valid=True)
 
-    if user_input.lower() in "Remove Account".lower():
+    if "Remove Account".lower().startswith(user_input.lower()):
         wf.add_item(title="Remove Account",
             arg="logout",
             autocomplete="Remove Account",
@@ -41,7 +41,7 @@ def main(_):
     """
     Allows user to input Home and Work coordinates.
     """
-    if user_input.lower() in "Set Home Location ".lower():
+    if "Set Home Location ".lower().startswith(user_input.lower()):
         wf.add_item(title="Set Home Location [long,lat]",
             autocomplete="Set Home Location ")
     elif user_input.lower().startswith("Set Home Location ".lower()):
@@ -53,7 +53,7 @@ def main(_):
         else:
             wf.add_item(title="Invalid Coordinates Format")
 
-    if user_input.lower() in "Set Work Location ".lower():
+    if "Set Work Location ".lower().startswith(user_input.lower()):
         wf.add_item(title="Set Work Location [long,lat]",
             autocomplete="Set Work Location ")
     elif user_input.lower().startswith("Set Work Location ".lower()):
@@ -64,6 +64,9 @@ def main(_):
                 valid=True)
         else:
             wf.add_item(title="Invalid Coordinates Format")
+
+    if len(wf._items) == 0:
+        wf.add_item(title="Invalid Option")
 
     wf.send_feedback()
     return 0
