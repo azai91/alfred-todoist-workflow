@@ -1,6 +1,12 @@
+"""
+Actions from todoist_settings
+"""
+
 import sys
 from workflow import Workflow
 from todoist_api import Todoist
+
+wf = Workflow()
 
 def main(wf):
   options = wf.args[0]
@@ -23,5 +29,4 @@ def main(wf):
   return 0
 
 if __name__ == '__main__':
-    wf = Workflow()
     sys.exit(wf.run(main))
